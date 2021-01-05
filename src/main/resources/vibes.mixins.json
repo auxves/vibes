@@ -1,0 +1,28 @@
+{
+	"required": true,
+	"minVersion": "0.8",
+	"package": "io.glossnyx.vibes.mixin",
+	"compatibilityLevel": "JAVA_8",
+	"mixins": [
+		"ServerPlayNetworkHandlerMixin",
+		"ScreenHandlerMixin",
+		"EntityMixin",
+		"ServerPlayerEntityMixin",
+		"ItemEntityMixin",
+		"HopperBlockEntityMixin",
+		"LootableContainerBlockEntityMixin",
+		"AbstractFurnaceBlockEntityMixin",
+		"StorageMinecartEntityMixin",
+		"ItemDispenserBehaviorMixin",
+		"SimpleInventoryMixin",
+		"EnderChestInventoryAccessor",
+		"ItemFrameEntityMixin",
+		"BlockMixin",
+		"ShulkerBoxBlockMixin"
+	],
+	"client": [],
+	"server": [],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
