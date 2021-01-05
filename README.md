@@ -6,7 +6,7 @@ Vibes try to position their music logically, which means that putting a Vibe ins
 
 Dropping a Vibe on the ground will move the sound source to the item entity, and picking it up will move the sound source to the position of the player that picked it up.
 
-### Dependencies
+## Dependencies
 
 - [Fabric Loader]
 - [Fabric API]
