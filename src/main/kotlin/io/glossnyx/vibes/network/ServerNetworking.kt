@@ -130,12 +130,13 @@ object ServerNetworking {
 			val cursorStack = player.inventory.cursorStack
 
 			val uuid = uuidOf(cursorStack) ?: return@register
+			val disc = discOf(cursorStack) ?: return@register
 
 			if (player.isCreative) {
-				slot.stack = discOf(cursorStack)
+				slot.stack = disc
 				setDiscOf(cursorStack, ItemStack.EMPTY)
 			} else {
-				player.inventory.cursorStack = discOf(cursorStack)
+				player.inventory.cursorStack = disc
 				slot.stack = cursorStack.copy()
 				setDiscOf(slot.stack, ItemStack.EMPTY)
 			}

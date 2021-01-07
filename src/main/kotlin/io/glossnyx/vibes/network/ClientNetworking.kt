@@ -52,8 +52,8 @@ object ClientNetworking {
 			}
 
 			Items.AIR -> {
-				if (player.isCreative) slot.stack = discOf(cursorStack)
-
+				val disc = discOf(cursorStack) ?: return
+				if (player.isCreative) slot.stack = disc
 				setDiscOf(cursorStack, ItemStack.EMPTY)
 
 				send(RightClickStop(slot.id))
