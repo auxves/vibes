@@ -26,7 +26,7 @@ object ServerNetworking {
 	/** Stops playing sounds */
 	fun stopPlaying(stack: ItemStack, world: World) {
 		forEachVibe(stack) {
-			world.sendAll(Stop(uuidOf(it)!!))
+			world.sendAll(Stop(uuidOf(it) ?: return@forEachVibe))
 		}
 	}
 
@@ -52,7 +52,6 @@ object ServerNetworking {
 	fun onPickup(player: PlayerEntity, entity: Entity?) {
 		if (entity == null) return
 		if (entity !is ItemEntity) return
-		if (player.world.isClient) return
 
 		changePositionProvider(entity.stack, player)
 	}
@@ -81,12 +80,15 @@ object ServerNetworking {
 	}
 
 	/** When player puts vibe into block */
-	fun changePositionProvider(stack: ItemStack, block: BlockEntity?) {
-		if (block == null) return
-		if (block.world!!.isClient) return
+	fun changePositionProvider(stack: ItemStack, block: BlockEntity?, oldStack: ItemStack?) {
+		val world = block?.world ?: return
+		if (world.isClient) return
+
+		if (oldStack != null) changePositionProvider(oldStack, world)
 
 		forEachVibe(stack) {
-			block.world!!.sendAll(ChangePositionBlock(uuidOf(it)!!, block.pos))
+			val uuid = uuidOf(it) ?: return@forEachVibe
+			world.sendAll(ChangePositionBlock(uuid, block.pos))
 		}
 	}
 
@@ -96,7 +98,8 @@ object ServerNetworking {
 		if (entity.world.isClient) return
 
 		forEachVibe(stack) {
-			entity.world.sendAll(ChangePositionEntity(uuidOf(it)!!, entity.uuid))
+			val uuid = uuidOf(it) ?: return@forEachVibe
+			entity.world.sendAll(ChangePositionEntity(uuid, entity.uuid))
 		}
 	}
 

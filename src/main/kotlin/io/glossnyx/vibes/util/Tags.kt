@@ -9,15 +9,14 @@ object Tags {
 	const val UUID = "VibeUUID"
 }
 
-fun uuidOf(stack: ItemStack): UUID? {
-	return if (stack.orCreateTag.containsUuid(Tags.UUID)) stack.orCreateTag.getUuid(Tags.UUID) else null
+fun uuidOf(stack: ItemStack) = stack.tag?.let {
+	if (it.containsUuid(Tags.UUID)) it.getUuid(Tags.UUID) else null
 }
 
 fun setUUIDOf(stack: ItemStack, uuid: UUID) = stack.orCreateTag.putUuid(Tags.UUID, uuid)
 
-fun discOf(stack: ItemStack): ItemStack? {
-	val tag = stack.getSubTag(Tags.DISC) ?: return null
-	return ItemStack.fromTag(tag)
+fun discOf(stack: ItemStack) = stack.getSubTag(Tags.DISC)?.let {
+	ItemStack.fromTag(it)
 }
 
 fun setDiscOf(stack: ItemStack, disc: ItemStack) {

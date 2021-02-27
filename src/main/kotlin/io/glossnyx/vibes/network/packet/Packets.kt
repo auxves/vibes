@@ -1,6 +1,7 @@
 package io.glossnyx.vibes.network.packet
 
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.network.PacketByteBuf
 import net.minecraft.server.network.ServerPlayerEntity
@@ -8,7 +9,7 @@ import net.minecraft.util.Identifier
 import kotlin.reflect.full.companionObjectInstance
 
 interface Packet {
-	fun toBuf(): PacketByteBuf
+	val buffer: PacketByteBuf
 }
 
 interface PacketCompanion {
@@ -36,10 +37,12 @@ inline fun <reified T : Packet> register(crossinline handler: (packet: T, player
 
 fun send(player: ServerPlayerEntity, packet: Packet) {
 	val companion = packet::class.companionObjectInstance as PacketCompanion
-	ServerPlayNetworking.send(player, companion.id, packet.toBuf())
+	ServerPlayNetworking.send(player, companion.id, packet.buffer)
 }
 
 fun send(packet: Packet) {
 	val companion = packet::class.companionObjectInstance as PacketCompanion
-	ClientPlayNetworking.send(companion.id, packet.toBuf())
+	ClientPlayNetworking.send(companion.id, packet.buffer)
 }
+
+fun createPacket(block: PacketByteBuf.() -> Unit) = PacketByteBufs.create().apply(block)!!

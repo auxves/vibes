@@ -1,7 +1,6 @@
 package io.glossnyx.vibes.network.packet
 
 import io.glossnyx.vibes.Vibes
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.minecraft.network.PacketByteBuf
 import net.minecraft.util.Identifier
 import java.util.UUID
@@ -17,8 +16,9 @@ data class RightClickPlay(val slotID: Int, val uuid: UUID, val identifier: Ident
 		)
 	}
 
-	override fun toBuf(): PacketByteBuf = PacketByteBufs.create()
-		.writeVarInt(slotID)
-		.writeUuid(uuid)
-		.writeIdentifier(identifier)
+	override val buffer = createPacket {
+		writeVarInt(slotID)
+		writeUuid(uuid)
+		writeIdentifier(identifier)
+	}
 }

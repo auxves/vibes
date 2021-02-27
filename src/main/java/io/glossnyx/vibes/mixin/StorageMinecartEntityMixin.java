@@ -25,7 +25,7 @@ class StorageMinecartEntityMixin extends AbstractMinecartEntity {
 
 	@Inject(method = "removeStack(II)Lnet/minecraft/item/ItemStack;", at = @At("RETURN"))
 	private void onRemoveStack(int slot, int amount, CallbackInfoReturnable<ItemStack> cir) {
-		ServerNetworking.INSTANCE.changePositionProvider(cir.getReturnValue(), this.world);
+		ServerNetworking.INSTANCE.changePositionProvider(cir.getReturnValue(), world);
 	}
 
 	@Override

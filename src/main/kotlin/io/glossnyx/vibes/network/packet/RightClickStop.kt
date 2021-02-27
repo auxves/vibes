@@ -1,7 +1,6 @@
 package io.glossnyx.vibes.network.packet
 
 import io.glossnyx.vibes.Vibes
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.minecraft.network.PacketByteBuf
 
 data class RightClickStop(val slotID: Int) : Packet {
@@ -10,5 +9,5 @@ data class RightClickStop(val slotID: Int) : Packet {
 		override fun fromBuf(buf: PacketByteBuf) = RightClickStop(buf.readVarInt())
 	}
 
-	override fun toBuf(): PacketByteBuf = PacketByteBufs.create().writeVarInt(slotID)
+	override val buffer = createPacket { writeVarInt(slotID) }
 }

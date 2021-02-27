@@ -16,6 +16,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 class ShulkerBoxBlockMixin {
 	@Inject(method = "onPlaced", at = @At("HEAD"))
 	private void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack, CallbackInfo ci) {
-		ServerNetworking.INSTANCE.changePositionProvider(itemStack, world.getBlockEntity(pos));
+		ServerNetworking.INSTANCE.changePositionProvider(itemStack, world.getBlockEntity(pos), null);
 	}
 }

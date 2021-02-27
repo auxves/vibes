@@ -14,7 +14,6 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 abstract
 class ItemEntityMixin {
 	@Shadow	private int age;
-	@Shadow public abstract ItemStack getStack();
 
 	@Redirect(
 		method = "onPlayerCollision",

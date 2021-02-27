@@ -16,7 +16,7 @@ class EntityMixin {
 
 	@Inject(method = "remove", at = @At("HEAD"))
 	private void onRemove(CallbackInfo ci) {
-		if (this.world.isClient) return;
+		if (world.isClient) return;
 
 		//noinspection ConstantConditions
 		if (!ItemEntity.class.isInstance(this)) return;

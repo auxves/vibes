@@ -1,26 +1,27 @@
 {
 	"schemaVersion": 1,
-	"id": "vibes",
+	"id": "${id}",
 	"version": "${version}",
-	"name": "Vibes",
+	"name": "${title}",
 	"description": "Listen to music discs on the go with the Vibe",
 	"authors": ["glossnyx"],
 	"contact": {
-		"homepage": "https://github.com/glossnyx/vibes",
-		"sources": "https://github.com/glossnyx/vibes"
+		"homepage": "https://github.com/glossnyx/${id}",
+		"sources": "https://github.com/glossnyx/${id}"
 	},
 	"license": "MIT",
-	"icon": "assets/vibes/icon.png",
+	"icon": "assets/${id}/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": ["io.glossnyx.vibes.EntrypointKt::init"],
 		"client": ["io.glossnyx.vibes.EntrypointKt::initClient"]
 	},
-	"mixins": ["vibes.mixins.json"],
+	"mixins": ["${id}.mixins.json"],
 	"depends": {
+		"minecraft": "1.16.x",
 		"fabricloader": ">=0.8.7",
-		"fabric": "*",
-		"fabric-language-kotlin": "*",
-		"minecraft": "1.16.x"
+		"fabric-resource-loader-v0": "*",
+		"fabric-networking-api-v1": "*",
+		"fabric-language-kotlin": "*"
 	}
 }

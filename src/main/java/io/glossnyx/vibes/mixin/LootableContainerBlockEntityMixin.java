@@ -6,24 +6,28 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.LootableContainerBlockEntity;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LootableContainerBlockEntity.class)
+abstract
 class LootableContainerBlockEntityMixin extends BlockEntity {
+	@Shadow public abstract ItemStack getStack(int slot);
+
 	public LootableContainerBlockEntityMixin(BlockEntityType<?> type) {
 		super(type);
 	}
 
 	@Inject(method = "setStack", at = @At("HEAD"))
 	private void onSetStack(int slot, ItemStack stack, CallbackInfo ci) {
-		ServerNetworking.INSTANCE.changePositionProvider(stack, this);
+		ServerNetworking.INSTANCE.changePositionProvider(stack, this, getStack(slot));
 	}
 
 	@Inject(method = "removeStack(II)Lnet/minecraft/item/ItemStack;", at = @At("RETURN"))
 	private void onRemoveStack(int slot, int amount, CallbackInfoReturnable<ItemStack> cir) {
-		ServerNetworking.INSTANCE.changePositionProvider(cir.getReturnValue(), this.world);
+		ServerNetworking.INSTANCE.changePositionProvider(cir.getReturnValue(), world);
 	}
 }

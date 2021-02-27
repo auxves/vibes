@@ -1,7 +1,6 @@
 package io.glossnyx.vibes.network.packet
 
 import io.glossnyx.vibes.Vibes
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.minecraft.network.PacketByteBuf
 import net.minecraft.util.math.BlockPos
 import java.util.UUID
@@ -16,7 +15,8 @@ data class ChangePositionBlock(val uuid: UUID, val blockPos: BlockPos) : Packet 
 		)
 	}
 
-	override fun toBuf(): PacketByteBuf = PacketByteBufs.create()
-		.writeUuid(uuid)
-		.writeBlockPos(blockPos)
+	override val buffer = createPacket {
+		writeUuid(uuid)
+		writeBlockPos(blockPos)
+	}
 }

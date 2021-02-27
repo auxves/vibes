@@ -18,9 +18,7 @@ object Vibe : Item(settings) {
 
 	override fun appendTooltip(stack: ItemStack?, world: World?, tooltip: MutableList<Text>?, context: TooltipContext?) {
 		if (tooltip == null || stack == null) return
-
 		val tag = stack.getSubTag(Tags.DISC) ?: return
-
 		ItemStack.fromTag(tag).item.appendTooltip(stack, world, tooltip, context)
 	}
 }
