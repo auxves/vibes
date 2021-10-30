@@ -16,7 +16,7 @@ class PlayerInventoryMixin {
 	@Shadow @Final public PlayerEntity player;
 
 	@Inject(method = "setStack", at = @At("HEAD"))
-	private void onTransferSlot(int slot, ItemStack stack, CallbackInfo ci) {
+	private void onSetStack(int slot, ItemStack stack, CallbackInfo ci) {
 		ServerNetworking.INSTANCE.changePositionProvider(stack, player);
 	}
 }
