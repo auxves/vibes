@@ -13,9 +13,9 @@ enum class VibeType {
 }
 
 fun shulkerInventoryOf(stack: ItemStack): List<ItemStack>? {
-	val tag = stack.getSubTag("BlockEntityTag") ?: return null
+	val nbt = stack.getSubNbt("BlockEntityTag") ?: return null
 	val inventory = DefaultedList.ofSize(27, ItemStack.EMPTY)
-	Inventories.fromTag(tag, inventory)
+	Inventories.readNbt(nbt, inventory)
 	return inventory.toList()
 }
 

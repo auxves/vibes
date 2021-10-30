@@ -14,8 +14,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 class EntityMixin {
 	@Shadow public World world;
 
-	@Inject(method = "remove", at = @At("HEAD"))
-	private void onRemove(CallbackInfo ci) {
+	@Inject(method = "discard", at = @At("HEAD"))
+	private void onDiscard(CallbackInfo ci) {
 		if (world.isClient) return;
 
 		//noinspection ConstantConditions

@@ -5,7 +5,9 @@ import net.fabricmc.fabric.api.networking.v1.PacketByteBufs
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.network.PacketByteBuf
 import net.minecraft.server.network.ServerPlayerEntity
+import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.Identifier
+import net.minecraft.world.World
 import kotlin.reflect.full.companionObjectInstance
 
 interface Packet {
@@ -44,5 +46,7 @@ fun send(packet: Packet) {
 	val companion = packet::class.companionObjectInstance as PacketCompanion
 	ClientPlayNetworking.send(companion.id, packet.buffer)
 }
+
+fun World.sendAll(packet: Packet) = (this as? ServerWorld)?.players?.forEach { send(it, packet) }
 
 fun createPacket(block: PacketByteBuf.() -> Unit) = PacketByteBufs.create().apply(block)!!

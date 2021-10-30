@@ -14,14 +14,12 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ItemFrameEntity.class)
-abstract class ItemFrameEntityMixin extends AbstractDecorationEntity {
-	protected ItemFrameEntityMixin(EntityType<? extends AbstractDecorationEntity> entityType, World world) {
-		super(entityType, world);
-	}
+class ItemFrameEntityMixin {
+	ItemFrameEntity that = ItemFrameEntity.class.cast(this);
 
 	@Inject(method = "setHeldItemStack(Lnet/minecraft/item/ItemStack;)V", at = @At("HEAD"))
 	private void onSetStack(ItemStack stack, CallbackInfo ci) {
-		ServerNetworking.INSTANCE.changePositionProvider(stack, this);
+		ServerNetworking.INSTANCE.changePositionProvider(stack, that);
 	}
 
 	@Redirect(

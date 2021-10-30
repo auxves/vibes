@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(Block.class)
 class BlockMixin {
 	@Redirect(
-		method = "dropStack",
+		method = "dropStack*",
 		at = @At(
 			value = "INVOKE",
 			target = "Lnet/minecraft/world/World;spawnEntity(Lnet/minecraft/entity/Entity;)Z"

@@ -11,10 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(ItemEntity.class)
-abstract
 class ItemEntityMixin {
-	@Shadow	private int age;
-
 	@Redirect(
 		method = "onPlayerCollision",
 		at = @At(
@@ -40,9 +37,8 @@ class ItemEntityMixin {
 		if (ItemsKt.isPlaying(stack)) stack.setCount(0);
 	}
 
-	@Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/ItemEntity;remove()V"))
-	private void onRemove(ItemEntity entity) {
-		if (ItemsKt.isPlaying(entity.getStack())) age = 0;
-		else entity.remove();
+	@Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/ItemEntity;discard()V"))
+	private void onDiscard(ItemEntity entity) {
+		if (!ItemsKt.isPlaying(entity.getStack())) entity.discard();
 	}
 }
