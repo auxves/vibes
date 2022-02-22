@@ -41,5 +41,6 @@ fun forEachVibe(stack: ItemStack, fn: (stack: ItemStack) -> Unit) {
 	when (vibeTypeOf(stack)) {
 		VibeType.VIBE -> fn(stack)
 		VibeType.SHULKER -> shulkerInventoryOf(stack)?.filter(::isPlaying)?.forEach { forEachVibe(it, fn) }
+		else -> return
 	}
 }
