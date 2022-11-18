@@ -18,7 +18,7 @@ class JukeboxBlockMixin {
 		ItemEntity itemEntity = (ItemEntity) entity;
 		ItemStack stack = itemEntity.getStack();
 		BridgesKt.changePosition(stack, entity);
-		BridgesKt.setDistance(entity.world, stack, ChangeDistance.Normal);
+		BridgesKt.changeDistance(stack, entity.world, ChangeDistance.Normal);
 		return world.spawnEntity(entity);
 	}
 }

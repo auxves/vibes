@@ -49,7 +49,7 @@ fun changePosition(stack: ItemStack, entity: Entity) {
 	}
 }
 
-fun setDistance(world: World, stack: ItemStack, distance: Float) {
+fun changeDistance(stack: ItemStack, world: World, distance: Float) {
 	vibesIn(stack).map { it.uuid }.forEach {
 		world.sendAll(ChangeDistance(it, distance))
 	}

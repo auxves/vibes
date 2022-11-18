@@ -57,8 +57,8 @@ Vibes is compatible with mods that introduce new music discs into the game, so y
 
 [curseforge]: https://www.curseforge.com/minecraft/mc-mods/vibes
 [modrinth]: https://modrinth.com/mod/vibes
-[github releases]: https://github.com/glossnyx/vibes/releases
+[github releases]: https://github.com/auxves/vibes/releases
 
 <!-- Suggestions -->
 
-[disco]: https://github.com/glossnyx/disco
+[disco]: https://github.com/auxves/disco
