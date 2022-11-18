@@ -1,28 +1,29 @@
 {
 	"required": true,
 	"minVersion": "0.8",
-	"package": "io.glossnyx.vibes.mixin",
+	"package": "io.auxves.vibes.mixin",
 	"compatibilityLevel": "JAVA_17",
+	"server": [],
+	"client": [],
 	"mixins": [
 		"AbstractFurnaceBlockEntityMixin",
 		"BlockMixin",
 		"EnderChestInventoryAccessor",
-		"EntityMixin",
 		"HopperBlockEntityMixin",
 		"ItemDispenserBehaviorMixin",
 		"ItemEntityMixin",
 		"ItemFrameEntityMixin",
+		"JukeboxBlockMixin",
 		"LootableContainerBlockEntityMixin",
 		"PlayerEntityMixin",
 		"PlayerInventoryMixin",
-		"ServerPlayerEntityMixin",
 		"ServerPlayNetworkHandlerMixin",
 		"ShulkerBoxBlockMixin",
 		"SimpleInventoryMixin",
+		"SoundManagerAccessor",
+		"SoundSystemAccessor",
 		"StorageMinecartEntityMixin"
 	],
-	"client": [],
-	"server": [],
 	"injectors": {
 		"defaultRequire": 1
 	}

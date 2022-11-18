@@ -14,11 +14,9 @@ Dropping a Vibe on the ground will move the sound source to the item entity, and
 
 ## Installation
 
-You have three options for downloading Vibes.
-
-- [CurseForge]
-- [Modrinth]
 - [GitHub Releases]
+- [Modrinth]
+- [CurseForge]
 
 ## Crafting
 
@@ -34,12 +32,12 @@ The mechanics for Vibe are very similar to how the bundle is used.
 
 1. Pick up the Vibe
 1. Hover over the disc
-1. Right click the disc with the Vibe
+1. Right-click the disc with the Vibe
 
 ### Ejecting Discs
 
 1. Pick up the Vibe
-1. Right click an empty inventory slot with the Vibe
+1. Right-click an empty inventory slot with the Vibe
 
 ## Compatibility
 
