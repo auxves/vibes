@@ -1,24 +1,24 @@
 {
 	"schemaVersion": 1,
-	"id": "${id}",
-	"version": "${version}",
-	"name": "${title}",
-	"description": "${description}",
-	"authors": ["${author}"],
+	"id": "vibes",
+	"version": "3.0.1",
+	"name": "Vibes — Portable Jukeboxes!",
+	"description": "Listen to music discs on the go with the Vibe, a portable jukebox!",
+	"authors": ["auxves"],
 	"contact": {
-		"homepage": "https://github.com/${author}/${id}",
-		"sources": "https://github.com/${author}/${id}"
+		"homepage": "https://github.com/auxves/vibes",
+		"sources": "https://github.com/auxves/vibes"
 	},
 	"license": "MIT",
-	"icon": "assets/${id}/icon.png",
+	"icon": "assets/vibes/icon.png",
 	"environment": "*",
 	"entrypoints": {
-		"main": ["io.${author}.${id}.EntrypointKt::init"],
-		"client": ["io.${author}.${id}.client.ClientKt::init"]
+		"main": ["dev.auxves.vibes.EntrypointKt::init"],
+		"client": ["dev.auxves.vibes.client.ClientKt::init"]
 	},
-	"mixins": ["${id}.mixins.json"],
+	"mixins": ["vibes.mixins.json"],
 	"depends": {
-		"minecraft": "1.19.x",
+		"minecraft": "1.20.x",
 		"fabricloader": "*",
 		"fabric-api": "*",
 		"fabric-language-kotlin": "*"

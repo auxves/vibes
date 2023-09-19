@@ -1,30 +1,30 @@
 {
-	"required": true,
-	"minVersion": "0.8",
-	"package": "io.auxves.vibes.mixin",
-	"compatibilityLevel": "JAVA_17",
-	"server": [],
-	"client": [],
-	"mixins": [
-		"AbstractFurnaceBlockEntityMixin",
-		"BlockMixin",
-		"EnderChestInventoryAccessor",
-		"HopperBlockEntityMixin",
-		"ItemDispenserBehaviorMixin",
-		"ItemEntityMixin",
-		"ItemFrameEntityMixin",
-		"JukeboxBlockMixin",
-		"LootableContainerBlockEntityMixin",
-		"PlayerEntityMixin",
-		"PlayerInventoryMixin",
-		"ServerPlayNetworkHandlerMixin",
-		"ShulkerBoxBlockMixin",
-		"SimpleInventoryMixin",
-		"SoundManagerAccessor",
-		"SoundSystemAccessor",
-		"StorageMinecartEntityMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
-	}
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.auxves.vibes.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "server": [],
+  "client": [],
+  "mixins": [
+    "AbstractFurnaceBlockEntityMixin",
+    "BlockMixin",
+    "EnderChestInventoryAccessor",
+    "HopperBlockEntityMixin",
+    "ItemDispenserBehaviorMixin",
+    "ItemEntityMixin",
+    "ItemFrameEntityMixin",
+    "JukeboxBlockEntityMixin",
+    "LootableContainerBlockEntityMixin",
+    "PlayerEntityMixin",
+    "PlayerInventoryMixin",
+    "ServerPlayNetworkHandlerMixin",
+    "ShulkerBoxBlockMixin",
+    "SimpleInventoryMixin",
+    "SoundManagerAccessor",
+    "SoundSystemAccessor",
+    "StorageMinecartEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
 }

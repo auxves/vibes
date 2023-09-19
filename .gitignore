@@ -1,6 +1,6 @@
 /.gradle
 /.idea
+/.direnv
+/remappedSrc
 /build
 /run
-/gradle
-/gradlew*
