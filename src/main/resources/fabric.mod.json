@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "vibes",
-	"version": "3.0.1",
+	"version": "${version}",
 	"name": "Vibes — Portable Jukeboxes!",
 	"description": "Listen to music discs on the go with the Vibe, a portable jukebox!",
 	"authors": ["auxves"],
