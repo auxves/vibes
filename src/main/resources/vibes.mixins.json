@@ -17,7 +17,6 @@
     "LootableContainerBlockEntityMixin",
     "PlayerEntityMixin",
     "PlayerInventoryMixin",
-    "ServerPlayNetworkHandlerMixin",
     "ShulkerBoxBlockMixin",
     "SimpleInventoryMixin",
     "SoundManagerAccessor",

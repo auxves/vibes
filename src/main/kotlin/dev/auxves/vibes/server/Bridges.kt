@@ -2,10 +2,7 @@ package dev.auxves.vibes.server
 
 import dev.auxves.vibes.mixin.EnderChestInventoryAccessor
 import dev.auxves.vibes.network.packet.*
-import dev.auxves.vibes.util.VibeType
-import dev.auxves.vibes.util.uuid
-import dev.auxves.vibes.util.vibeTypeOf
-import dev.auxves.vibes.util.vibesIn
+import dev.auxves.vibes.util.*
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.entity.Entity
 import net.minecraft.entity.ItemEntity
@@ -35,7 +32,9 @@ fun onBreakShulkerBox(entity: Entity) {
 }
 
 fun stopPlaying(stack: ItemStack, world: World) {
-	vibesIn(stack).map { it.uuid }.forEach { world.sendAll(Stop(it)) }
+	vibesIn(stack).map { it.uuid }.forEach {
+		world.sendAll(Stop(it))
+	}
 }
 
 fun changePosition(stack: ItemStack, block: BlockEntity) {

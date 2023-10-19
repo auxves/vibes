@@ -14,12 +14,7 @@ object Tags {
 }
 
 var ItemStack.uuid: UUID
-	get() {
-		if (orCreateNbt.containsUuid(Tags.UUID)) return orCreateNbt.getUuid(Tags.UUID)
-		val new = UUID.randomUUID()
-		uuid = new
-		return new
-	}
+	get() = orCreateNbt.getUuid(Tags.UUID)
 	set(new) = orCreateNbt.putUuid(Tags.UUID, new)
 
 var ItemStack.disc: ItemStack?

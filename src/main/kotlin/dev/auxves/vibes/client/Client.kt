@@ -9,7 +9,7 @@ import dev.auxves.vibes.sound.VibeInstance
 import kotlinx.coroutines.*
 import net.minecraft.client.MinecraftClient
 import net.minecraft.sound.SoundEvent
-import java.util.UUID
+import java.util.*
 
 private val client = MinecraftClient.getInstance()
 private val instances = mutableMapOf<UUID, VibeInstance>()

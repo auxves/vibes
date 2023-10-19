@@ -22,7 +22,7 @@ tasks.named<Copy>("processResources") {
 
 	from(sourceSets["main"].resources.srcDirs) {
 		include("fabric.mod.json")
-		expand(project.properties)
+		expand(properties)
 	}
 
 	from(sourceSets["main"].resources.srcDirs) {
