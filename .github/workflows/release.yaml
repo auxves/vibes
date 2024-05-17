@@ -5,6 +5,7 @@ on: [release, workflow_dispatch]
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: Production
 
     permissions:
       contents: write
