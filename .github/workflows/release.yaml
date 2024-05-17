@@ -1,6 +1,9 @@
 name: Release
 
-on: [release, workflow_dispatch]
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
 
 jobs:
   build:
