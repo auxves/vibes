@@ -1,9 +1,11 @@
 package dev.auxves.vibes.server
 
 import dev.auxves.vibes.mixin.EnderChestInventoryAccessor
-import dev.auxves.vibes.network.packet.*
+import dev.auxves.vibes.network.sendAll
+import dev.auxves.vibes.network.payloads.*
 import dev.auxves.vibes.util.*
 import net.minecraft.block.entity.BlockEntity
+import net.minecraft.component.DataComponentTypes
 import net.minecraft.entity.Entity
 import net.minecraft.entity.ItemEntity
 import net.minecraft.entity.player.PlayerEntity
@@ -24,9 +26,9 @@ fun handleEnderChest(inventory: Inventory, stack: ItemStack) {
 	stopPlaying(stack, world)
 }
 
-fun onBreakShulkerBox(entity: Entity) {
+fun onBreak(entity: Entity) {
 	if (entity !is ItemEntity) return
-	if (vibeTypeOf(entity.stack) != VibeType.SHULKER) return
+	if (!entity.stack.contains(DataComponentTypes.CONTAINER)) return
 
 	changePosition(entity.stack, entity)
 }

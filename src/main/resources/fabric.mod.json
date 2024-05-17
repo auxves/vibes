@@ -9,7 +9,7 @@
 		"homepage": "https://github.com/auxves/vibes",
 		"sources": "https://github.com/auxves/vibes"
 	},
-	"license": "MIT",
+	"license": ["GPL-3.0"],
 	"icon": "assets/vibes/icon.png",
 	"environment": "*",
 	"entrypoints": {

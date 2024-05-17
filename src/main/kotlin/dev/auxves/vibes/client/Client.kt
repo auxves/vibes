@@ -2,11 +2,12 @@ package dev.auxves.vibes.client
 
 import dev.auxves.vibes.mixin.SoundManagerAccessor
 import dev.auxves.vibes.mixin.SoundSystemAccessor
-import dev.auxves.vibes.network.packet.*
+import dev.auxves.vibes.network.payloads.*
 import dev.auxves.vibes.sound.BlockPositionProvider
 import dev.auxves.vibes.sound.EntityPositionProvider
 import dev.auxves.vibes.sound.VibeInstance
 import kotlinx.coroutines.*
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.minecraft.client.MinecraftClient
 import net.minecraft.sound.SoundEvent
 import java.util.*
@@ -33,19 +34,19 @@ fun init() {
 		soundSystem.sources
 	}
 
-	register<Play> { data ->
+	ClientPlayNetworking.registerGlobalReceiver(Play.ID) { data, _ ->
 		stop(data.uuid)
 
-		val entity = getEntity(data.player) ?: return@register
+		val entity = getEntity(data.player) ?: return@registerGlobalReceiver
 		val instance = VibeInstance(EntityPositionProvider(entity), SoundEvent.of(data.sound))
 		instances[data.uuid] = instance
 
 		client.soundManager.play(instance)
 	}
 
-	register<Stop> { data -> stop(data.uuid) }
+	ClientPlayNetworking.registerGlobalReceiver(Stop.ID) { data, _ -> stop(data.uuid) }
 
-	register<ChangePositionEntity> { data ->
+	ClientPlayNetworking.registerGlobalReceiver(ChangePositionEntity.ID) { data, _ ->
 		instances[data.uuid]?.let {
 			scope.launch {
 				delay(100)
@@ -55,13 +56,13 @@ fun init() {
 		}
 	}
 
-	register<ChangePositionBlock> { data ->
+	ClientPlayNetworking.registerGlobalReceiver(ChangePositionBlock.ID) { data, _ ->
 		instances[data.uuid]?.let {
 			it.position = BlockPositionProvider(data.blockPos)
 		}
 	}
 
-	register<ChangeDistance> { data ->
+	ClientPlayNetworking.registerGlobalReceiver(ChangeDistance.ID) { data, _ ->
 		instances[data.uuid]?.let {
 			sources[it]?.run { source -> source.setAttenuation(data.distance) }
 		}
