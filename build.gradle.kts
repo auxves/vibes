@@ -30,6 +30,10 @@ tasks.named<Copy>("processResources") {
 	}
 }
 
+tasks.withType<KotlinCompile> {
+	kotlinOptions.jvmTarget = "21"
+}
+
 tasks.withType<Jar> {
 	from("LICENSE")
 }
