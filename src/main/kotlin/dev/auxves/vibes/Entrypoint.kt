@@ -14,7 +14,6 @@ object Vibes {
 	fun id(path: String) = Identifier("vibes", path)
 }
 
-@Suppress("unused")
 fun init() {
 	Registry.register(Registries.DATA_COMPONENT_TYPE, Vibes.id("uuid"), DataComponents.UUID)
 	Registry.register(Registries.DATA_COMPONENT_TYPE, Vibes.id("disc"), DataComponents.DISC)

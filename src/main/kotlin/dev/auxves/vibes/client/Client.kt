@@ -24,7 +24,6 @@ private fun stop(uuid: UUID) = instances[uuid]?.let {
 	instances.remove(uuid)
 }
 
-@Suppress("unused")
 fun init() {
 	val scope = CoroutineScope(Dispatchers.Unconfined)
 
